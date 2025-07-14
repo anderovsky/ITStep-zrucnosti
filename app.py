@@ -9,7 +9,6 @@ app.config['SECRET_KEY'] = 'tajneheslo'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///skills.db'
 db = SQLAlchemy(app)
 
-# MODELY
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)

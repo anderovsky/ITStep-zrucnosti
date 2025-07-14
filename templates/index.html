@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
-{% block title %}Domov{% endblock %}
+{% block title %}SkillApp{% endblock %}
 {% block content %}
 <h1 class="text-2xl font-bold mb-4">Ponuky zručností</h1>
 <form method="get" class="mb-4">
-  <input type="text" name="q" placeholder="Hľadať..." value="{{ query }}" class="border p-2 rounded">
-  <button class="bg-blue-500 text-white px-4 py-2 rounded">Hľadať</button>
+  <input type="text" name="q" placeholder="Hľadaj zručnosť" value="{{ query }}" class="border p-2 rounded">
+  <button class="bg-teal-900 text-white px-4 py-2 rounded">Hľadať</button>
 </form>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
   {% for s in services %}
-    <div class="bg-white p-4 rounded shadow">
-      <h2 class="text-xl font-bold">{{ s.title }}</h2>
+    <div class="bg-stone-100 p-4 rounded shadow">
+      <h2 class="text-xl font-bold text-stone-600">{{ s.title }}</h2>
       <p class="text-sm text-gray-500">{{ s.description[:100] }}...</p>
-      <p class="font-bold mt-2">{{ s.price }} €</p>
-      <a href="{{ url_for('service_detail', service_id=s.id) }}" class="text-blue-600">Detail</a>
+      <p class="font-bold mt-2 mb-2">{{ s.price }} €</p>
+      <a class="text-amber-900 font-bold" href="{{ url_for('service_detail', service_id=s.id) }}" class="text-blue-600 font-bold mt-8">Detail kurzu</a>
     </div>
   {% endfor %}
 </div>

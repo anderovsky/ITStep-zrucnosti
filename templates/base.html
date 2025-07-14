@@ -6,21 +6,27 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>{% block title %}Zručnosti{% endblock %}</title>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <nav class="bg-white shadow p-4 flex justify-between">
-    <a href="{{ url_for('index') }}" class="font-bold">Domov</a>
-    <div>
+<body class="bg-stone-300 text-gray-800 flex flex-col min-h-screen">
+
+  <nav class="shadow p-4 flex justify-between bg-teal-600">
+    <a href="{{ url_for('index') }}" class="ml-5 font-bold text-white text-xl hover:text-teal-950">SkillApp</a>
+    <div class="mr-5">
       {% if session.get('user_id') %}
-        <a href="{{ url_for('add') }}" class="mr-2">Pridať službu</a>
-        <a href="{{ url_for('logout') }}">Odhlásiť sa</a>
+        <a class="mr-4 bg-teal-900  hover:bg-teal-300 hover:text-teal-950 text-white font-bold py-2 px-4 rounded-full" href="{{ url_for('add') }}" class="mr-2">Pridať službu</a>
+        <a class="bg-amber-900 hover:bg-amber-300 hover:text-amber-900 text-white font-bold py-2 px-4 rounded-full" href="{{ url_for('logout') }}">Odhlásiť sa</a>
       {% else %}
-        <a href="{{ url_for('login') }}" class="mr-2">Prihlásenie</a>
-        <a href="{{ url_for('register') }}">Registrácia</a>
+        <a class="mr-4 bg-teal-900  hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="{{ url_for('login') }}" class="mr-2">Prihlásenie</a>
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" href="{{ url_for('register') }}">Registrácia</a>
       {% endif %}
     </div>
   </nav>
-  <div class="p-4">
+
+  <div class="p-10">
     {% block content %}{% endblock %}
   </div>
+    <footer class="bg-teal-600 text-teal-950 shadow p-4 flex justify-between sticky bottom-0 mt-auto">
+        <p>Copypright 2025 SkillApp</p>
+        <a class="font-bold text-teal-950 hover:text-white" href="{{ url_for('about') }}">O projekte</a>
+    </footer>
 </body>
 </html>
