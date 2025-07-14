@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Prihlásenie{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Prihlásenie</h1>
+<form method="post" class="space-y-4">
+  <input name="username" placeholder="Používateľské meno" class="w-full border p-2 rounded">
+  <input type="password" name="password" placeholder="Heslo" class="w-full border p-2 rounded">
+  <button class="bg-blue-500 text-white px-4 py-2 rounded">Prihlásiť</button>
+</form>
+{% endblock %}

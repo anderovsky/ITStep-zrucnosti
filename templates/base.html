@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>{% block title %}Zručnosti{% endblock %}</title>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <nav class="bg-white shadow p-4 flex justify-between">
+    <a href="{{ url_for('index') }}" class="font-bold">Domov</a>
+    <div>
+      {% if session.get('user_id') %}
+        <a href="{{ url_for('add') }}" class="mr-2">Pridať službu</a>
+        <a href="{{ url_for('logout') }}">Odhlásiť sa</a>
+      {% else %}
+        <a href="{{ url_for('login') }}" class="mr-2">Prihlásenie</a>
+        <a href="{{ url_for('register') }}">Registrácia</a>
+      {% endif %}
+    </div>
+  </nav>
+  <div class="p-4">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
