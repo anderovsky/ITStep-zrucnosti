@@ -33,11 +33,19 @@ class Review(db.Model):
 @app.route('/')
 def index():
     q = request.args.get('q', '')
+    sort = request.args.get('sort', 'date')  # 'date' is default
+
+    query = Service.query
     if q:
-        services = Service.query.filter(Service.title.contains(q)).all()
+        query = query.filter(Service.title.contains(q))
+
+    if sort == 'title':
+        query = query.order_by(Service.title.asc())
     else:
-        services = Service.query.all()
-    return render_template('index.html', services=services, query=q)
+        query = query.order_by(Service.created_at.desc())
+
+    services = query.all()
+    return render_template('index.html', services=services, query=q, sort=sort)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
