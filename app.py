@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask, render_template, redirect, url_for, request, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -29,7 +28,7 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('service.id'), nullable=False)
 
-# ROUTY
+# ROUTES
 @app.route('/')
 def index():
     q = request.args.get('q', '')

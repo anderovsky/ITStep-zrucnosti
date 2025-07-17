@@ -8,7 +8,7 @@
     <option value="date" {% if sort == 'date' %}selected{% endif %}>Najnovšie</option>
     <option value="title" {% if sort == 'title' %}selected{% endif %}>Podľa názvu</option>
   </select>
-  <button class="bg-blue-500 text-white px-4 py-2 rounded">Filtrovať</button>
+  <button class="bg-teal-900 text-white hover:bg-teal-400 hover:text-teal-900 px-4 py-2 rounded">Filtrovať</button>
 </form>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
   {% for s in services %}
@@ -16,7 +16,7 @@
       <h2 class="text-xl font-bold text-stone-600">{{ s.title }}</h2>
       <p class="text-sm text-gray-500">{{ s.description[:100] }}...</p>
       <p class="font-bold mt-2 mb-2">{{ s.price }} €</p>
-      <a class="text-amber-900 font-bold" href="{{ url_for('service_detail', service_id=s.id) }}" class="text-blue-600 font-bold mt-8">Detail kurzu</a>
+      <a class="text-amber-900 font-bold" href="{{ url_for('service_detail', service_id=s.id) }}" class="text-blue-600 font-bold mt-8">Detail služby</a>
     </div>
   {% endfor %}
 </div>
